@@ -64,13 +64,14 @@ extension TodoTableViewController : UITableViewDataSource {
         return self.todo.size
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // let cell = TodoTableViewCell(style: .Default, reuseIdentifier: nil)
         let cell = TodoTableViewCell(style: .Default, reuseIdentifier: nil)
-        cell.delegate = self
+        cell!.delegate = self
         
-        cell.textLabel!.text = self.todo[indexPath.row].title
-        cell.tag = indexPath.row
+        cell!.textLabel!.text = self.todo[indexPath.row].title
+        cell!.tag = indexPath.row
         
-        return cell
+        return cell!
     }
 }
 extension TodoTableViewController : TodoTableViewCellDelegate {
@@ -101,7 +102,6 @@ extension TodoTableViewController : TodoTableViewCellDelegate {
 }
 extension TodoTableViewController : UITextFieldDelegate {
     func textFieldShouldEndEditing(textField: UITextField!) -> Bool {
-        println ("textFieldShouldEntEditing")
         if let type = self.alertType {
             switch type {
             case .Create:

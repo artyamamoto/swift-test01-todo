@@ -25,10 +25,26 @@ class TodoTableViewCell : UITableViewCell {
         delegate?.removeTodo?(self.tag)
     }
     
-    
+    /*
     override init(style: UITableViewCellStyle, reuseIdentifier: String!=nil) {
         super.init(style:style, reuseIdentifier:reuseIdentifier)
+        // super.init(style:style, reuseIdentifier:reuseIdentifier)
         
+        self.selectionStyle = .None
+        
+        self.createView()
+        
+        let swipeRecognizer = UISwipeGestureRecognizer(target: self, action: "showDeleteButton")
+        swipeRecognizer.direction = .Left
+        self.contentView.addGestureRecognizer(swipeRecognizer)
+        
+        self.contentView.addGestureRecognizer(UISwipeGestureRecognizer(target: self, action: "hideDeleteButton"))
+    } */
+    override init?(style: UITableViewCellStyle, reuseIdentifier: String!=nil) {
+        super.init(style:style, reuseIdentifier:reuseIdentifier)
+        self.initProp()
+    }
+    func initProp() {
         self.selectionStyle = .None
         
         self.createView()
